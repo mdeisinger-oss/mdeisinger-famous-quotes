@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Famous Quotes Explorer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="logo-area">
+        <span class="logo-icon">“</span>
+        <div>
+          <h1>Famous Quotes</h1>
+          <p class="tagline">Timeless wisdom from 100 influential minds</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero / Random Quote Card -->
+    <section class="hero-section">
+      <div class="hero-card" id="heroCard">
+        <div class="hero-card-header">
+          <span class="badge" id="heroCategory">Category</span>
+          <span class="hero-badge-tag">Quote of the Moment</span>
+        </div>
+        <div class="hero-quote-body">
+          <p class="quote-text" id="heroQuote">“Loading an inspiring quote...”</p>
+          <div class="quote-author-wrap">
+            <span class="author-dash">—</span>
+            <span class="author-name" id="heroAuthor">Author</span>
+          </div>
+        </div>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="btnNewQuote" title="Generate another random quote">
+            <span class="icon">↻</span> New Random Quote
+          </button>
+          <button class="btn btn-secondary" id="btnCopyHero" title="Copy quote to clipboard">
+            <span class="icon">📋</span> Copy Quote
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search & Filter Controls -->
+    <section class="explorer-section">
+      <div class="explorer-header">
+        <h2>Explore & Search Quotes</h2>
+        <p>Filter by author name, category, or search keywords in real time.</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-bar-wrapper">
+        <span class="search-icon">🔍</span>
+        <input 
+          type="text" 
+          id="authorSearch" 
+          placeholder="Search by author (e.g. Einstein, Jobs, Socrates) or keywords..." 
+          autocomplete="off"
+        />
+        <button class="btn-clear hidden" id="btnClearSearch" title="Clear search">✕</button>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="categories-bar" id="categoriesBar">
+        <button class="cat-pill active" data-category="">
+          All Quotes <span class="cat-count">100</span>
+        </button>
+        <!-- Dynamic category pills will be loaded here -->
+      </div>
+
+      <!-- Results Info -->
+      <div class="results-meta">
+        <span id="resultsCount">Showing 100 quotes</span>
+        <button class="btn-text hidden" id="btnResetFilters">Reset all filters</button>
+      </div>
+
+      <!-- Quotes Grid -->
+      <div class="quotes-grid" id="quotesGrid">
+        <!-- Quote cards dynamically rendered here -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state hidden" id="emptyState">
+        <div class="empty-icon">🔎</div>
+        <h3>No matching quotes found</h3>
+        <p>Try searching for a different author name or selecting a different category.</p>
+        <button class="btn btn-secondary" id="btnEmptyReset">Reset Filters</button>
+      </div>
+    </section>
+
+    <!-- Toast Notification -->
+    <div class="toast hidden" id="toast">Quote copied to clipboard!</div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Crafted with <strong>Python Flask</strong>, <strong>Vanilla JavaScript</strong>, and semantic HTML/CSS.</p>
+      <p class="dataset-meta">100 curated quotes spanning Science, Philosophy, Literature, Tech, and more.</p>
+    </footer>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
